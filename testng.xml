@@ -6,7 +6,7 @@
 	<!-- driver的属性配置文件保存路径 -->
 	<parameter name="driverConfgFilePath" value="config/driver.properties" />
 	<!-- 定义测试的站点 -->
-	<parameter name="testurl" value="http://192.168.1.38:8070" />
+	<parameter name="testurl" value="http://192.168.1.49:8070" />
 	<!-- 进程等待1秒中的控制时间 -->
 	<parameter name="sleepTime" value="800" />
 	<!-- 页面元素10秒不出现超时时间 -->
