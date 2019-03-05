@@ -5,7 +5,7 @@
 	<artifactId>autotest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>selenium_2_combat</name>
+	<name>xianAutoTest</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -93,6 +93,7 @@
 	</dependencies>
 	<build>
 	<!-- 新版本maven配合这个标签使用指定代码目录 -->
+	<defaultGoal>compile</defaultGoal>
 	<testSourceDirectory>src</testSourceDirectory> 
 		<resources>
 			<resource>
@@ -130,6 +131,6 @@
 			</plugin>
 
 		</plugins>
-		<defaultGoal>compile</defaultGoal>
+		
 	</build>
 </project>
