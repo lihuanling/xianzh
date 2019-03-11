@@ -6,9 +6,9 @@
 	<!-- driver的属性配置文件保存路径 -->
 	<parameter name="driverConfgFilePath" value="config/driver.properties" />
 	<!-- 定义测试的站点 -->
-	<!-- <parameter name="testurl" value="http://xian.novaecs.com/pc/main/index.html" /> -->
+	 <parameter name="testurl" value="http://xian.novaecs.com/pc/main/index.html" /> 
 	
-	<parameter name="testurl" value="http://192.168.1.49:8070" />
+	<!--<parameter name="testurl" value="http://192.168.1.49:8070" />-->
 	<!-- 进程等待1秒中的控制时间 -->
 	<parameter name="sleepTime" value="800" />
 	<!-- 页面元素10秒不出现超时时间 -->
@@ -37,6 +37,9 @@
 					<include name = 'realMap_BiaoZhanChooseController'/>
 					<include name = 'realMap_BiaoZhanStyleChoose'/>
 					<include name = 'RealMap_TodayOnlineCar'/>
+					
+					<include name = 'realMap_ShowCar'/>
+					<include name = 'realMap_UnShowCar'/>
 					<include name = 'RealMap_AllListNum'/>
 					<include name = 'RealMap_avgPM25'/>
 					<include name = 'RealMap_avgPM10'/>
