@@ -61,6 +61,8 @@ public class RealMapPage {
 	
 	
 
+	//显示车辆
+	public static final By ZH_REALMAP_SHOWCAR = By.cssSelector("span[data-label='label_showCar']>label>span>input");
 	
 	
 }

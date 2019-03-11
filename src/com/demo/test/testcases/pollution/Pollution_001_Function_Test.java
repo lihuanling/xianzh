@@ -38,6 +38,102 @@ public class Pollution_001_Function_Test extends BaseParpare {
 			  Assert.fail();
 		  }
 	  }
+	  @Test
+	  public void pollution_Show_pollution_point() {
+		  if(PollutionPageHelper.DefaultChoose(seleniumUtil, PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWPOLLUTIONPOINT)) {
+			  PollutionPageHelper.logger.info("污染点已默认被选中");
+		  }else if(seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWPOLLUTIONPOINT).isEnabled()) {
+			  PollutionPageHelper.logger.info("对污染点进行选择操作");
+			  seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWPOLLUTIONPOINT).click();
+			  seleniumUtil.pause(2000);
+		  }else {
+			  PollutionPageHelper.logger.info("污染点选项不能执行操作");
+			  Assert.fail();
+		  }
+	  }
+	  
+	  @Test
+	  public void pollution_Show_pollution_pointUnchoose() {
+		  if(PollutionPageHelper.DefaultChoose(seleniumUtil, PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWPOLLUTIONPOINT)) {
+			  PollutionPageHelper.logger.info("污染点已默认被选中,执行取消选择操作");
+			  seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWPOLLUTIONPOINT).click();
+			  seleniumUtil.pause(2000);
+		  }else if(seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWPOLLUTIONPOINT).isEnabled()) {
+			  PollutionPageHelper.logger.info("对污染点进行选择操作");
+			  seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWPOLLUTIONPOINT).click();
+			  seleniumUtil.pause(2000);
+		  }else {
+			  PollutionPageHelper.logger.info("污染点选项不能执行操作");
+			  Assert.fail();
+		  }
+	  }
+	  
+	  @Test
+	  public void pollution_Refresh() {
+		  seleniumUtil.addCookies(500);
+		  PollutionPageHelper.logger.info("执行刷新操作，验证当前功能点是否正常使用");
+		  if(seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_UPDATE).isEnabled()) {
+			  PollutionPageHelper.logger.info("点击刷新按钮");
+			  seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_UPDATE).click();
+			  seleniumUtil.pause(2000);
+		  }else {
+			  PollutionPageHelper.logger.info("当前刷新按钮不能正常使用");
+			  Assert.fail();
+		  }
+		  
+	  }
+	  
+	  
+	  
+	  @Test 
+	  public void pollution_clean_ranking() {
+		  seleniumUtil.addCookies(500);
+		  if(seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_CLEARRANKING).isSelected()) {
+			  PollutionPageHelper.logger.info("该操作框已选中");
+			  Assert.fail();
+		  }else {
+			  PollutionPageHelper.logger.info("对清洁排名执行选中操作");
+			  seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_CLEARRANKING).click();
+			  seleniumUtil.pause(2000);
+		  }
+	  }
+	  @Test 
+	  public void pollution_pollution_ranking() {
+		  seleniumUtil.addCookies(500);
+		  if(PollutionPageHelper.DefaultChoose(seleniumUtil, PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_POLLUTIONRANKING)) {
+			  PollutionPageHelper.logger.info("污染排名选项已默认被选中");
+			  
+		  }else if(seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_POLLUTIONRANKING).isEnabled()){
+			  PollutionPageHelper.logger.info("对污染排名执行选中操作");
+			  seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_POLLUTIONRANKING).click();
+			  seleniumUtil.pause(2000);
+		  }else {
+			  PollutionPageHelper.logger.info("污染排名选项不能执行操作");
+			  Assert.fail();
+		  }
+	  }
+	  
+	  
+	  
+	  
+	  
+	  /**
+	   * 污染云图复选框操作，默认已选中，判断已选中即为成功
+	   * **/
+	  @Test 
+	  public void pollution_PollutionCloudMap() {
+		  seleniumUtil.addCookies(500);
+		  if(PollutionPageHelper.DefaultChoose(seleniumUtil,PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_WURANYUNTU)) {
+			  PollutionPageHelper.logger.info("污染云图选项已被选中");
+		  }else if(seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_WURANYUNTU).isEnabled()){
+			  PollutionPageHelper.logger.info("对污染云图选项进行点击操作");
+			  seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_WURANYUNTU).click();
+			  seleniumUtil.pause(2000);
+		  }
+	  }
+	  
+	  
+	  
 	  
 	  /**
 	   * 
@@ -111,13 +207,13 @@ public class Pollution_001_Function_Test extends BaseParpare {
 			  Assert.fail();
 		  }
 	  }
-	  /**
-	   * 污染云图复选框操作，默认已选中，判断已选中即为成功
-	   * **/
+	 
 	  @Test
-	  public void pollution_PollutionCloudMap() {
+	  public void pollution_ChooseArea() {
 		  seleniumUtil.addCookies(500);
-		  PollutionPageHelper.DefaultChoose(seleniumUtil,PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_WURANYUNTU);
+		  seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SELECTAREA).click();
+		  PollutionPageHelper.el(seleniumUtil, 2, PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SELECCHILDTAREA).click();
+		  seleniumUtil.pause(2000);
 	  }
 	  /**
 	   * 污染云图默认选中，现在执行取消操作，判断已选中，执行点击事件

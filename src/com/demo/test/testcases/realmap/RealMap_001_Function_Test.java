@@ -74,6 +74,22 @@ public class RealMap_001_Function_Test extends BaseParpare{
 		  RealMapPageHelper.judgementCheck(seleniumUtil, RealMapPage.ZH_REALMAP_MACHINENUM);
 		  RealMapPageHelper.logger.info("设备号复选框选择成功");
 	  }
+	  
+	  
+	  @Test
+	  public void realMap_ShowCar() {
+		  seleniumUtil.addCookies(500);
+		  RealMapPageHelper.logger.info("显示车辆默认被选中");
+		  if(RealMapPageHelper.DefaultChoose(seleniumUtil, RealMapPage.ZH_REALMAP_SHOWCAR)) {
+			  RealMapPageHelper.logger.info("显示车辆选项正常被选中");
+		  }else if(seleniumUtil.findElementBy(RealMapPage.ZH_REALMAP_SHOWCAR).isEnabled()) {
+			  RealMapPageHelper.logger.info("显示车辆选项执行选中操作");
+			  seleniumUtil.findElementBy(RealMapPage.ZH_REALMAP_SHOWCAR).click();
+		  }else {
+			  RealMapPageHelper.logger.info("显示车辆选项不能被操作");
+			  Assert.fail();
+		  }
+	  }
 	  /**
 	   * 
 	   * //设备号取消操作
@@ -124,8 +140,12 @@ public class RealMap_001_Function_Test extends BaseParpare{
 	  public void realMap_ShowBZNameChoose() {
 		  seleniumUtil.addCookies(500);
 		  RealMapPageHelper.logger.info("标站选中，那么标站名称显示默认已选中");
-		  RealMapPageHelper.DefaultChoose(seleniumUtil, RealMapPage.ZH_REALMAP_SHOWBIAOZHANNAME);
-		  RealMapPageHelper.logger.info("标站名称显示正常");
+		  if(RealMapPageHelper.DefaultChoose(seleniumUtil, RealMapPage.ZH_REALMAP_SHOWBIAOZHANNAME)) {
+			  RealMapPageHelper.logger.info("标站名称显示正常");
+		  }else {
+			  RealMapPageHelper.logger.info("标站名称显示不正常");
+			  Assert.fail();
+		  }
 	  }
 	  /**
 	   * 
@@ -137,21 +157,40 @@ public class RealMap_001_Function_Test extends BaseParpare{
 	  public void realMap_ShowBZNameUnChoose() {
 		  seleniumUtil.addCookies(500);
 		  RealMapPageHelper.logger.info("标站名称显示执行取消选择");
-		  RealMapPageHelper.UnjudgementCheck(seleniumUtil, RealMapPage.ZH_REALMAP_SHOWBIAOZHANNAME);
-		  RealMapPageHelper.logger.info("标站名称显示成功取消选择");
+		  if(RealMapPageHelper.DefaultChoose(seleniumUtil, RealMapPage.ZH_REALMAP_SHOWBIAOZHANNAME)) {
+			  RealMapPageHelper.logger.info("标站名称显示执行取消选择");
+			  seleniumUtil.findElementBy(RealMapPage.ZH_REALMAP_SHOWBIAOZHANNAME).click();
+			  seleniumUtil.pause(2000);
+		  }else if(seleniumUtil.findElementBy(RealMapPage.ZH_REALMAP_SHOWBIAOZHANNAME).isEnabled()){
+			  RealMapPageHelper.logger.info("标站名称显示执行选择操作");
+			  seleniumUtil.findElementBy(RealMapPage.ZH_REALMAP_SHOWBIAOZHANNAME).click();
+			  seleniumUtil.pause(2000);
+		  }else {
+			  RealMapPageHelper.logger.info("标站名称显示执行取消选择失败");
+			  Assert.fail();
+		  }
 	  }
 	  /**
 	   * 
-	   * //报警图片默认已选中
+	   * //报警图片执行选中操作
 	   * 
 	   * */
 	  
 	  @Test
 	  public void realMap_ShowAlarmPicChoose() {
 		  seleniumUtil.addCookies(500);
-		  RealMapPageHelper.logger.info("报警图片默认选中");
-		  RealMapPageHelper.DefaultChoose(seleniumUtil, RealMapPage.ZH_REALMAP_SHOWPIC);
-		  RealMapPageHelper.logger.info("报警图片显示正常");
+		  if(RealMapPageHelper.DefaultChoose(seleniumUtil, RealMapPage.ZH_REALMAP_SHOWPIC)) {
+			  RealMapPageHelper.logger.info("报警图片执行选择操作");
+			  seleniumUtil.findElementBy(RealMapPage.ZH_REALMAP_SHOWPIC).click();
+			  seleniumUtil.pause(2000);
+		  }else if(seleniumUtil.findElementBy(RealMapPage.ZH_REALMAP_SHOWPIC).isEnabled()){
+			  RealMapPageHelper.logger.info("报警图片执行取消操作");
+			  seleniumUtil.findElementBy(RealMapPage.ZH_REALMAP_SHOWPIC).click();
+			  seleniumUtil.pause(2000);
+		  }else {
+			  RealMapPageHelper.logger.info("报警图片执行取消选择失败");
+			  Assert.fail();
+		  }
 	  }
 	  
 	  /**
@@ -162,9 +201,21 @@ public class RealMap_001_Function_Test extends BaseParpare{
 	  @Test
 	  public void realMap_ShowAlarmPicUnChoose() {
 		  seleniumUtil.addCookies(500);
-		  RealMapPageHelper.logger.info("报警图片执行取消选择");
-		  RealMapPageHelper.UnjudgementCheck(seleniumUtil, RealMapPage.ZH_REALMAP_SHOWPIC);
-		  RealMapPageHelper.logger.info("报警图片成功取消选择");
+		  if(RealMapPageHelper.DefaultChoose(seleniumUtil, RealMapPage.ZH_REALMAP_SHOWPIC)) {
+			  RealMapPageHelper.logger.info("报警图片执行取消选择");
+			  seleniumUtil.findElementBy(RealMapPage.ZH_REALMAP_SHOWPIC).click();
+			  seleniumUtil.pause(2000);
+		  }else if(seleniumUtil.findElementBy(RealMapPage.ZH_REALMAP_SHOWPIC).isEnabled()){
+			  RealMapPageHelper.logger.info("报警图片执行选择操作");
+			  seleniumUtil.findElementBy(RealMapPage.ZH_REALMAP_SHOWPIC).click();
+			  seleniumUtil.pause(2000);
+			  RealMapPageHelper.logger.info("报警图片执行取消选择");
+			  seleniumUtil.findElementBy(RealMapPage.ZH_REALMAP_SHOWPIC).click();
+		  }else {
+			  RealMapPageHelper.logger.info("报警图片执行取消选择失败");
+			  Assert.fail();
+		  }
+		  
 	  }
 	  
 	  /**

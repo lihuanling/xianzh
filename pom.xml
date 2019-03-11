@@ -93,7 +93,7 @@
 	</dependencies>
 	<build>
 	<!-- 新版本maven配合这个标签使用指定代码目录 -->
-	<defaultGoal>compile</defaultGoal>
+
 	<testSourceDirectory>src</testSourceDirectory> 
 		<resources>
 			<resource>

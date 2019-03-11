@@ -67,12 +67,13 @@ public class RealMapPageHelper {
 		}
 	}
 	//默认选中的元素进行操作
-	public static void DefaultChoose(SeleniumUtil seleniumUtil,By by) {
+	public static boolean DefaultChoose(SeleniumUtil seleniumUtil,By by) {
 		if(seleniumUtil.findElementBy(by).isSelected() & seleniumUtil.findElementBy(by).isEnabled() ) {
 			logger.info("该元素已默认被选中");
+			return true;
 		}else{
 			logger.info("该元素没有默认选中或者不可被操作");
-			Assert.fail();
+			return false;
 		}
 	}
 	

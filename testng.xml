@@ -8,7 +8,7 @@
 	<!-- 定义测试的站点 -->
 	<!-- <parameter name="testurl" value="http://xian.novaecs.com/pc/main/index.html" /> -->
 	
-	<parameter name="testurl" value="http://192.168.1.49:8071" />
+	<parameter name="testurl" value="http://192.168.1.49:8070" />
 	<!-- 进程等待1秒中的控制时间 -->
 	<parameter name="sleepTime" value="800" />
 	<!-- 页面元素10秒不出现超时时间 -->
@@ -32,7 +32,7 @@
 	</test> -->
 	<test name="realmap" preserve-order="true">
 		<classes>
- 			 <class name="com.demo.test.testcases.realmap.RealMap_001_Function_Test" >
+ 			  <class name="com.demo.test.testcases.realmap.RealMap_001_Function_Test" >
 				<methods>
 					<include name = 'realMap_BiaoZhanChooseController'/>
 					<include name = 'realMap_BiaoZhanStyleChoose'/>
@@ -56,11 +56,19 @@
 					<include name = 'realMap_ShowAlarmPicChoose'/>
 					<include name = 'realMap_ShowAlarmPicUnChoose'/> 
 				</methods>
-			</class> 
+			</class>
 			<class name = "com.demo.test.testcases.pollution.Pollution_001_Function_Test">
 				<methods>
 					<include name = "pollution_BiaoZhanChooseController"/>
+					<include name = "pollution_clean_ranking"/>
+					<include name = "pollution_pollution_ranking"/>
+					<include name = "pollution_Show_pollution_point"/>
+					<include name = "pollution_Refresh"/>
+					<include name = "pollution_Show_pollution_pointUnchoose"/>
 					
+				
+					
+					<include name = "pollution_ChooseArea"/>
 					<include name = "Pollution_tabChoose"/>
 				    <include name = "Pollution_pointFilter"/>
 					<include name = "Pollution_dataStyleChoose25"/>
@@ -72,7 +80,7 @@
 					<include name = "pollution_UnShowAlarmPic"/>
 					<include name = "pollution_PollutionCloudMap"/>
 					<include name = "pollution_PollutionCloudMapUnChoose"/>
-					<include name = "pollution_ColorChange"/>
+					<include name = "pollution_ColorChange"/> 
 				</methods>
 			</class>
 		</classes>

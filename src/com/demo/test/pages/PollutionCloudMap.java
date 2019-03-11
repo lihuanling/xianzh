@@ -46,15 +46,15 @@ public class PollutionCloudMap {
 	
 	
 	//清洁排名
-	public static final By ZH_POLLUTIONCLOUDMAP_CLEARRANKING = By.cssSelector("label.label_pollution_cloud_image>span>input");
+	public static final By ZH_POLLUTIONCLOUDMAP_CLEARRANKING = By.cssSelector("label[data-label='label_clean_ranking']>span>input[name='rankType']");
 	//污染排名
-	public static final By ZH_POLLUTIONCLOUDMAP_POLLUTIONRANKING = By.cssSelector("label.label_pollution_cloud_image>span>input");
+	public static final By ZH_POLLUTIONCLOUDMAP_POLLUTIONRANKING = By.cssSelector("label[data-label='label_pollution_ranking']>span>input[name='rankType']");
 	//显示污染点
-	public static final By ZH_POLLUTIONCLOUDMAP_SHOWPOLLUTIONPOINT = By.cssSelector("label.label_pollution_cloud_image>span>input");
+	public static final By ZH_POLLUTIONCLOUDMAP_SHOWPOLLUTIONPOINT = By.cssSelector("div[data-label='label_display_pollution_point']>div>div>span>label>span>input");
 	//刷新
-	public static final By ZH_POLLUTIONCLOUDMAP_UPDATE = By.cssSelector("label.label_pollution_cloud_image>span>input");
+	public static final By ZH_POLLUTIONCLOUDMAP_UPDATE = By.cssSelector("button[data-label='label_refresh']");
 	//导出
-	public static final By ZH_POLLUTIONCLOUDMAP_EXPORT = By.cssSelector("label.label_pollution_cloud_image>span>input");
+	public static final By ZH_POLLUTIONCLOUDMAP_EXPORT = By.cssSelector("button[data-label='label_maxpoint_export']");
 
 
 }
