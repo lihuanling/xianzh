@@ -86,7 +86,7 @@ public class RealMap_001_Function_Test extends BaseParpare{
 	  }
 	  
 	  /**
-	   * 判断显示车辆是不是正常被选中
+	   * 显示车辆正常被选中
 	   * */
 	  @Test
 	  public void realMap_ShowCar() {
@@ -126,14 +126,14 @@ public class RealMap_001_Function_Test extends BaseParpare{
 	   * //设备号取消操作
 	   * 
 	   * */
-	  
-	  @Test
-	  public void realMap_machineNumUnChoose() {
-		  seleniumUtil.addCookies(500);
-		  RealMapPageHelper.logger.info("设备号执行取消选择");
-		  RealMapPageHelper.UnjudgementCheck(seleniumUtil, RealMapPage.ZH_REALMAP_MACHINENUM);
-		  RealMapPageHelper.logger.info("设备号成功取消选择");
-	  }
+//	  
+//	  @Test
+//	  public void realMap_machineNumUnChoose() {
+//		  seleniumUtil.addCookies(500);
+//		  RealMapPageHelper.logger.info("设备号执行取消选择");
+//		  RealMapPageHelper.UnjudgementCheck(seleniumUtil, RealMapPage.ZH_REALMAP_MACHINENUM);
+//		  RealMapPageHelper.logger.info("设备号成功取消选择");
+//	  }
 	  /**
 	   * 
 	   * 
@@ -149,6 +149,12 @@ public class RealMap_001_Function_Test extends BaseParpare{
 			  RealMapPageHelper.logger.info("污染云图没有被选中，现在开始执行选择操作");
 			  seleniumUtil.findElementBy(RealMapPage.ZH_REALMAP_WURANYUNTU).click();
 			  seleniumUtil.pause(2000);
+			  if(seleniumUtil.findElementBy(RealMapPage.ZH_REALMAP_WURANYUNTU).isSelected()) {
+				  RealMapPageHelper.logger.info("污染云图成功被选中");
+			  }else {
+				  RealMapPageHelper.logger.info("污染云图没有被选中,该用例执行失败");
+				  Assert.fail();
+			  }
 		  }else {
 			  RealMapPageHelper.logger.info("污染云图不能正常选择");
 			  Assert.fail();
@@ -195,7 +201,11 @@ public class RealMap_001_Function_Test extends BaseParpare{
 		  RealMapPageHelper.logger.info("标站选中，那么标站名称显示默认已选中");
 		  if(RealMapPageHelper.DefaultChoose(seleniumUtil, RealMapPage.ZH_REALMAP_SHOWBIAOZHANNAME)) {
 			  RealMapPageHelper.logger.info("标站名称显示正常");
-		  }else {
+		  }else if(seleniumUtil.findElementBy(RealMapPage.ZH_REALMAP_SHOWBIAOZHANNAME).isEnabled()){
+			  RealMapPageHelper.logger.info("标站名称显示没有被勾选，执行点击事件进行勾选");
+			  seleniumUtil.findElementBy(RealMapPage.ZH_REALMAP_SHOWBIAOZHANNAME).click();
+			  seleniumUtil.pause(2000);
+		  }else{
 			  RealMapPageHelper.logger.info("标站名称显示不正常");
 			  Assert.fail();
 		  }

@@ -129,6 +129,14 @@ public class Pollution_001_Function_Test extends BaseParpare {
 			  PollutionPageHelper.logger.info("对污染云图选项进行点击操作");
 			  seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_WURANYUNTU).click();
 			  seleniumUtil.pause(2000);
+			  if(seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_WURANYUNTU).isSelected()) {
+				  PollutionPageHelper.logger.info("污染云图成功被选中");
+			  }else {
+				  PollutionPageHelper.logger.info("污染云图不能正常操作");
+				  Assert.fail();
+			  }
+		  }else {
+			  
 		  }
 	  }
 	  
@@ -143,8 +151,17 @@ public class Pollution_001_Function_Test extends BaseParpare {
 	  @Test
 	  public void pollution_ShowBiaoZhanName() {
 		  seleniumUtil.addCookies(500);
-		  PollutionPageHelper.logger.info("标站勾选成功，那么标站名称也会默认显示");
-		  PollutionPageHelper.DefaultChoose(seleniumUtil,PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWBIAOZHANNAME);
+		  
+		  if(PollutionPageHelper.DefaultChoose(seleniumUtil,PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWBIAOZHANNAME)) {
+			  PollutionPageHelper.logger.info("标站勾选成功，那么标站名称也会默认显示");
+		  }else if(seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWBIAOZHANNAME).isEnabled()){
+			  PollutionPageHelper.logger.info("标站没有被勾选，执行勾选操作");
+			  seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWBIAOZHANNAME).click();
+			  seleniumUtil.pause(2000);
+		  }else {
+			  PollutionPageHelper.logger.info("标站没有被勾选，无法执行勾选操作");
+			  Assert.fail();
+		  }
 		  
 	  }
 	  /**
@@ -154,32 +171,47 @@ public class Pollution_001_Function_Test extends BaseParpare {
 	  @Test
 	  public void pollution_ShowBiaoZhanNameUnChoose() {
 		  seleniumUtil.addCookies(500);
-		  PollutionPageHelper.logger.info("标站勾选成功，那么标站名称也会默认显示");
-		  if(seleniumUtil.isSelected(seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWBIAOZHANNAME)) & seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWBIAOZHANNAME).isEnabled()) {
+		  if(PollutionPageHelper.DefaultChoose(seleniumUtil,PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWBIAOZHANNAME)) {
 			  PollutionPageHelper.logger.info("标站名称已选中，可以进行取消操作");
 			  seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWBIAOZHANNAME).click();
+			  seleniumUtil.pause(2000);
 			  if(seleniumUtil.isSelected(seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWBIAOZHANNAME)) == false) {
 				  PollutionPageHelper.logger.info("标站名称成功取消操作");
 			  }else {
 				  PollutionPageHelper.logger.info("标站名称由于其他原因，没有成功取消操作");
 				  Assert.fail();
 			  }
+		  }else {
+			  PollutionPageHelper.logger.info("标站名称由于其他原因，没有被勾选");
+			  Assert.fail();
 		  }
 		  
 	  }
 	  
 	  
-	  
+	  /**
+	   * 标站取消选择
+	   * */
 	  @Test
 	  public void pollution_BiaoZhanUnChoose() {
 		  seleniumUtil.addCookies(500);
-		  if(!PollutionPageHelper.ifCheckBoxChoose(seleniumUtil,PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_BIAOZHAN)) {
+		  if(PollutionPageHelper.DefaultChoose(seleniumUtil,PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_BIAOZHAN)) {
 			  //对标站复选框进行取消选择操作
-			  PollutionPageHelper.logger.info("等待成功加载，然后勾选标站复选框");
+			  PollutionPageHelper.logger.info("等待成功加载，然后执行取消勾选标站复选框");
 			  seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_BIAOZHAN).click();
 			  seleniumUtil.pause(2000);
-			  PollutionPageHelper.logger.info("成功取消勾选标站复选框");
-		  }else {
+			  if(!seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_BIAOZHAN).isSelected()) {
+				  PollutionPageHelper.logger.info("成功取消勾选标站复选框");
+			  }else {
+				  PollutionPageHelper.logger.info("没有成功取消勾选标站复选框");
+				  Assert.fail();
+			  }
+			  
+		  }else if(seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_BIAOZHAN).isEnabled()) {
+			  PollutionPageHelper.logger.info("标站没有被勾选，现在开始执行勾选操作");
+			  seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_BIAOZHAN).click();
+			  seleniumUtil.pause(2000);
+		  }else{
 			  PollutionPageHelper.logger.info("标站复选框取消不正常");
 			  Assert.fail();
 		  }
@@ -190,7 +222,21 @@ public class Pollution_001_Function_Test extends BaseParpare {
 	  @Test
 	  public void pollution_ShowAlarmPic() {
 		  seleniumUtil.addCookies(500);
-		  PollutionPageHelper.DefaultChoose(seleniumUtil,PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWALARMPIC);
+		  if(PollutionPageHelper.DefaultChoose(seleniumUtil,PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWALARMPIC)) {
+			  PollutionPageHelper.logger.info("报警图片显示正常");
+		  }else if(seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWALARMPIC).isEnabled()) {
+			  PollutionPageHelper.logger.info("报警图片没有被选中，现在开始执行选择操作");
+			  seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWALARMPIC).click();
+			  seleniumUtil.pause(2000);
+			  if(seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWALARMPIC).isSelected()) {
+				  PollutionPageHelper.logger.info("报警图片被成功选中");
+			  }else {
+				  PollutionPageHelper.logger.info("报警图片没有被成功选中");
+			  }
+		  }else {
+			  PollutionPageHelper.logger.info("报警图片没有被选中，也无法成功执行操作");
+			  Assert.fail();
+		  }
 	  }
 	  
 	  /**
@@ -202,6 +248,13 @@ public class Pollution_001_Function_Test extends BaseParpare {
 		  if(seleniumUtil.isSelected(seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWALARMPIC))) {
 			  PollutionPageHelper.logger.info("执行取消报警图片显示操作");
 			  seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWALARMPIC).click();
+			  seleniumUtil.pause(2000);
+			  if(!seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_SHOWALARMPIC).isSelected()) {
+				  PollutionPageHelper.logger.info("取消报警图片显示操作正常");
+			  }else {
+				  PollutionPageHelper.logger.info("执行取消报警图片显示操作失败");
+				  Assert.fail();
+			  }
 		  }else {
 			  PollutionPageHelper.logger.info("执行取消报警图片显示操作失败，可能由于该元素没有选中");
 			  Assert.fail();
@@ -283,12 +336,12 @@ public class Pollution_001_Function_Test extends BaseParpare {
 		  if(PollutionPageHelper.whetherCheck(seleniumUtil, PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_DATASTYLE)) {
 			  PollutionPageHelper.logger.info("点击下拉菜单，进行数据类型切换操作");
 			  seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_DATASTYLE).click();
-			  seleniumUtil.pause(1000);
+			  seleniumUtil.pause(2000);
 			  PollutionPageHelper.logger.info("下拉菜单点击成功，执行下一步选择数据类型为PM10");
 			  if(PollutionPageHelper.whetherCheck(seleniumUtil, PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_DATASTYLE10)) {
 				  PollutionPageHelper.logger.info("选择数据类型为PM10");
 				  seleniumUtil.findElementBy(PollutionCloudMap.ZH_POLLUTIONCLOUDMAP_DATASTYLE10).click();
-				  seleniumUtil.pause(1000);
+				  seleniumUtil.pause(2000);
 			  }else {
 				  PollutionPageHelper.logger.info("PM10不能被选择");
 				  Assert.fail();

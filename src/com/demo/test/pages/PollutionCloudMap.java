@@ -32,7 +32,7 @@ public class PollutionCloudMap {
 	//点数过滤
 	public static final By ZH_POLLUTIONCLOUDMAP_POINTFILTER = By.cssSelector("div[role='spinbutton']>input");
 	//数据类型选择
-	public static final By ZH_POLLUTIONCLOUDMAP_DATASTYLE = By.cssSelector("div[data-label='label_TileMap_PMchoose']");
+	public static final By ZH_POLLUTIONCLOUDMAP_DATASTYLE = By.cssSelector("div[data-label='label_TileMap_PMchoose']>div>div>div");
 	public static final By ZH_POLLUTIONCLOUDMAP_DATASTYLE25 = By.cssSelector("li[data-label='label_TileMapPM₂.₅']");
 	public static final By ZH_POLLUTIONCLOUDMAP_DATASTYLE10 = By.cssSelector("li[data-label='label_TileMapPM₁₀']");
 	//时间类型
