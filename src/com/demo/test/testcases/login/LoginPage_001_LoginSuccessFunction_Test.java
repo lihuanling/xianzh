@@ -18,8 +18,6 @@ public class LoginPage_001_LoginSuccessFunction_Test extends BaseParpare{
 	  LoginPageHelper.typeLoginInfo(seleniumUtil,data.get("USERNAME"), data.get("PASSWORD"));
 	  //等待首页元素显示出来
 	  RealMapPageHelper.waitHomePageLoad(seleniumUtil, timeOut);
-	  //检查用户名是不是期望的"USERNAME"
-	  //HomePageHelper.checkUserName(seleniumUtil, timeOut, data.get("USERNAME"));
 
   }
 }

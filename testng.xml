@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- thread-count 定义同时启动的浏览器数 、parallel="tests" 表明每个test都是平级的 -->
-<suite name="selenium_2_combat" parallel="tests" thread-count="3">
+<suite name="ZH_AutoTest" parallel="tests" thread-count="3">
 	<!-- chrome,firefox,ghost和ie不区分大小写 -->
 	<parameter name="browserName" value="firefox" />
 	<!-- driver的属性配置文件保存路径 -->
 	<parameter name="driverConfgFilePath" value="config/driver.properties" />
 	<!-- 定义测试的站点 -->
-	<parameter name="testurl" value="http://192.168.1.49:8070" />
+	<!-- <parameter name="testurl" value="http://xian.novaecs.com/pc/main/index.html" /> -->
+	
+	<parameter name="testurl" value="http://192.168.1.49:8071" />
 	<!-- 进程等待1秒中的控制时间 -->
 	<parameter name="sleepTime" value="800" />
 	<!-- 页面元素10秒不出现超时时间 -->
@@ -23,10 +25,57 @@
 			<package name="com.demo.test.testcases.login" />
 		</packages>
 	</test> -->
- 	<test name="realmap" preserve-order="true">
+ 	<!-- <test name="realmap" preserve-order="true">
 		<packages>
 			<package name="com.demo.test.testcases.realmap" />
 		</packages>
+	</test> -->
+	<test name="realmap" preserve-order="true">
+		<classes>
+ 			 <class name="com.demo.test.testcases.realmap.RealMap_001_Function_Test" >
+				<methods>
+					<include name = 'realMap_BiaoZhanChooseController'/>
+					<include name = 'realMap_BiaoZhanStyleChoose'/>
+					<include name = 'RealMap_TodayOnlineCar'/>
+					<include name = 'RealMap_AllListNum'/>
+					<include name = 'RealMap_avgPM25'/>
+					<include name = 'RealMap_avgPM10'/>
+	 			 	<include name = 'realMap_ShowBZNameChoose'/>
+					<include name = 'realMap_ShowBZNameUnChoose'/>
+					<include name = 'RealMap_ColorChange'/>
+					<include name = 'RealMap_BiaoZhanChooseStyle'/>
+					<include name = 'realMap_BiaoZhanUnChooseController'/>
+					<include name = 'realMap_machineNumChoose'/>
+					<include name = 'RealMap_dataStyleChoose25'/>
+					<include name = 'RealMap_dataStyleChoose10'/>
+					<include name = 'realMap_machineNumUnChoose'/>
+					<include name = 'realMap_PollutionCloudMapChoose'/>
+					<include name = 'realMap_PollutionCloudMapUnChoose'/>
+					<include name = 'RealMap_machineNumSearch'/>
+					<include name = 'RealMap_CarList'/>
+					<include name = 'realMap_ShowAlarmPicChoose'/>
+					<include name = 'realMap_ShowAlarmPicUnChoose'/> 
+				</methods>
+			</class> 
+			<class name = "com.demo.test.testcases.pollution.Pollution_001_Function_Test">
+				<methods>
+					<include name = "pollution_BiaoZhanChooseController"/>
+					
+					<include name = "Pollution_tabChoose"/>
+				    <include name = "Pollution_pointFilter"/>
+					<include name = "Pollution_dataStyleChoose25"/>
+					<include name = "Pollution_dataStyleChoose10"/>
+					<include name = "pollution_ShowBiaoZhanName"/>
+					<include name = "pollution_ShowBiaoZhanNameUnChoose"/>
+					<include name = "pollution_BiaoZhanUnChoose"/>
+					<include name = "pollution_ShowAlarmPic"/>
+					<include name = "pollution_UnShowAlarmPic"/>
+					<include name = "pollution_PollutionCloudMap"/>
+					<include name = "pollution_PollutionCloudMapUnChoose"/>
+					<include name = "pollution_ColorChange"/>
+				</methods>
+			</class>
+		</classes>
 	</test>
 
 	<listeners>
